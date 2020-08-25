@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Acme Widgets</title>
+</head>
+
+<body>
+    <img src="/static/logo.jpg" />
+
+    <h1>Welcome to Acme Widgets Customer Support</h1>
+
+    {% if requests %}
+        <p>Existing support requests for {{ email }}:</p>
+        <ul>
+            {% for request in requests %}
+                <li><a href="/view-request/{{ request.id }}">{{ request.title }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <h1>Enter a new support request below:</h1>
+    <form action="/new-request" method="post">
+        <p>
+            <label for="title">Request title: </label>
+            <input type="text" name="title" id="title" required />
+        </p>
+        <p>
+            <label for="description">Description:</label>
+            <textarea name="description" id="description" 
+                      rows ="10" cols="60" required>
+            </textarea>
+        </p>
+
+        <input type="submit" value="Submit request"
+    </form>
+
+    <p>Return to Acme Widgets <a href="{{ public }}">home page</a>.</p>
+</body>
+</html>
