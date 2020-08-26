@@ -7,31 +7,32 @@
 <body>
     <img src="/static/logo.jpg" />
 
-    <h1>Support request {{ request.id }} for {{ email }}</h1>
+    <h1>Support request for {{ email }}</h1>
 
     <h2>{{ request.title }}</h2>
     <p> {{ request.description }} </p>
 
-    <h2>History:</h2>
+    <h3>Comments:</h3>
     <ul>
-        {% for comment in comments %}
+        {% for comment in request.comments %}
             <li>
-                <strong>{{ comment.date }} {{ comment.commenter }}:</strong>>
+                <strong>{{ comment.commenter }} at {{ comment.created_at }}:</strong>>
                 {{ comment.comment }}
             </li>
         {% endfor %}
     </ul>
 
-    <h1>Add a comment on this request:</h1>
+    <h2>Add a comment on this request:</h2>
     <form action="/new-comment" method="post">
         <p>
-            <label for="comment">comment:</label>
+            <label for="comment">Comment:</label>
+            <br />
             <textarea name="comment" id="comment" 
-                      rows ="10" cols="60" required>
-            </textarea>
+                      rows ="10" cols="60" required></textarea>
         </p>
 
-        <input type="submit" value="Submit comment"
+        <input type="hidden" name="id" id="id" value="{{ request.id }}" />
+        <input type="submit" value="Submit comment" />
     </form>
 
     <p>Return to Acme Widgets <a href="{{ public }}">home page</a>.</p>

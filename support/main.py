@@ -55,6 +55,59 @@ def save_request(email, title, description):
     })
 
 
+def get_request(id, email):
+    db = firestore.Client()
+    doc = db.collection('requests').document(document_id=id)
+
+    if doc is None:
+        return None
+    req = doc.get()
+    if not req.exists:
+        return None
+
+    info = req.to_dict()
+    if info['email'] != email:
+        return None
+
+    info['id'] = id
+    print('Okay so far')
+
+    comments = doc.collection('comments').stream()
+    print('comments collection is {}'.format(comments))
+    info['comments'] = []
+    for comment in comments:
+        item = comment.to_dict()
+        item['created_at'] = str(item['created_at'])[:16]
+        info['comments'].append(item)
+    return info
+
+
+def save_comment(email, request_id, comment):
+    db = firestore.Client()
+    doc = db.collection('requests').document(document_id=request_id)
+
+    if doc is None:
+        return None
+    req = doc.get()
+    if not req.exists:
+        return None
+
+    info = req.to_dict()
+    if info['email'] != email:
+        return None
+
+    right_now = datetime.now()
+    requests = doc.collection('comments').add({
+        'comment': comment,
+        'commenter': get_email(),
+        'created_at': right_now,
+        'updated_at': right_now
+    })
+
+    doc.set({'updated_at': right_now}, merge=True)
+    return True
+
+
 @app.route('/', methods=['GET'])
 def home_page():
     public_url = os.environ.get('public')
@@ -71,9 +124,29 @@ def create_request():
     save_request(email, title, description)
 
     return redirect('/')
-    pass
+
+
+@app.route('/view-request/<id>')
+def view_request(id):
+    public_url = os.environ.get('public')
+    info = get_request(id, email=get_email())
+    if info is None:
+        return 'No such request', 404
+    return render_template('view-request.html',
+        public=public_url, email=get_email(), request=info)
 
 
 @app.route('/new-comment', methods=['POST'])
 def add_comment():
-    pass
+    id = request.form.get('id')
+    comment = request.form.get('comment')
+    email = get_email()
+    
+    if save_comment(email, id, comment) is not None:
+        return redirect('/view-request/{}'.format(id))
+    else:
+        return 'Save failed', 500
+
+
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', port=8080, debug=True)
