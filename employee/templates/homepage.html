@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Acme Widgets</title>
+</head>
+
+<body>
+    <img src="/static/logo.jpg" />
+
+    <h1>Acme Widgets Employee Site for {{ email }}</h1>
+
+    <h2>Notices:</h2>
+    <ul>
+        {% for notice in notices %}
+            <li>{{ notice.timestamp}}: <strong>{{ notice.title }}</strong>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <p>Return to Acme Widgets <a href="{{ public }}">home page</a>.</p>
+</body>
+</html>

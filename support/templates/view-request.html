@@ -16,7 +16,7 @@
     <ul>
         {% for comment in request.comments %}
             <li>
-                <strong>{{ comment.commenter }} at {{ comment.created_at }}:</strong>>
+                <strong>{{ comment.commenter }} at {{ comment.created_at }}:</strong>
                 {{ comment.comment }}
             </li>
         {% endfor %}

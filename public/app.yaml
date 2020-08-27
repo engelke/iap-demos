@@ -1,6 +1,6 @@
 runtime: python38
 
-service: support
+service: default
 
 handlers:
 - url: /static
@@ -10,4 +10,4 @@ handlers:
   script: auto
 
 env_variables:
-  support: "https://support-dot-explore-iap-use-cases.uc.r.appspot.com/"
+  support: "https://support-dot-enterprise-iap-use-cases.uc.r.appspot.com/"
