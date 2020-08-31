@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Acme Widgets Notices</title>
+</head>
+
+<body>
+    <img src="/static/logo.jpg" />
+
+    <h1>Edit Notice</h1>
+
+    <form action="/replace-notice" method="post">
+        <p>
+            <label for="title">Notice title: </label>
+            <input type="text" name="title" id="title" required value="{{ notice.title }}" />
+        </p>
+        <p>
+            <label for="description">Description:</label>
+            <br />
+            <textarea name="description" id="description" 
+                      rows ="10" cols="60" required>{{ notice.description }}</textarea>
+        </p>
+
+        <input type="hidden" id="id" name="id" value="{{ notice.id }}" />
+        <input type="submit" value="Save notice" />
+    </form>
+
+    <p>Return to Acme Widgets <a href="{{ public }}">home page</a>.</p>
+</body>
+</html>
