@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Acme Widgets</title>
+</head>
+
+<body>
+    <img src="/static/logo.jpg" />
+
+    <h1>Acme Widgets Customer Support Staff</h1>
+
+    {% if requests %}
+        <p>Existing support requests for {{ email }}:</p>
+        <ul>
+            {% for request in requests %}
+                <li>{{ request.timestamp}}:
+                    <a href="/view-request/{{ request.id }}">
+                    <strong>{{ request.title }}</strong></a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <p>Return to Acme Widgets <a href="{{ public }}">home page</a>.</p>
+</body>
+</html>

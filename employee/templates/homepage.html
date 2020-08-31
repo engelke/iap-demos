@@ -13,6 +13,8 @@
     <ul>
         {% for notice in notices %}
             <li>{{ notice.timestamp}}: <strong>{{ notice.title }}</strong>
+                <br />
+                {{ notice.description }}
             </li>
         {% endfor %}
     </ul>

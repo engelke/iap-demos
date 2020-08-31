@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Acme Widgets</title>
+</head>
+
+<body>
+    <img src="/static/logo.jpg" />
+
+    <h1>Support request for {{ email }}</h1>
+
+    <h2>{{ request.title }}</h2>
+    <p> {{ request.description }} </p>
+
+    <h3>Comments:</h3>
+    <ul>
+        {% for comment in request.comments %}
+            <li>
+                <strong>{{ comment.commenter }} at {{ comment.created_at }}:</strong>
+                {{ comment.comment }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Add a comment on this request:</h2>
+    <form action="/new-comment" method="post">
+        <p>
+            <label for="comment">Comment:</label>
+            <br />
+            <textarea name="comment" id="comment" 
+                      rows ="10" cols="60" required></textarea>
+        </p>
+
+        <input type="hidden" name="id" id="id" value="{{ request.id }}" />
+        <input type="submit" value="Submit comment" />
+    </form>
+
+    <p>Return to Acme Widgets <a href="{{ public }}">home page</a>.</p>
+</body>
+</html>
