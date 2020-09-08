@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Acme Widgets</title>
+    <title>Big Corp Ltd</title>
+    <link type="text/css" rel="stylesheet" href="/static/style.css">
 </head>
 
 <body>
-    <img src="/static/logo.jpg" />
+    <div id="heading">
+        <img id="logo" src="/static/logo.png" />
+        <div id="welcome">
+            Big Corp Ltd
+        </div>
+    </div>
+
+    <div id="slogan">We do everything!</div>
 
     <h1>Support request for {{ email }}</h1>
 
@@ -35,6 +43,6 @@
         <input type="submit" value="Submit comment" />
     </form>
 
-    <p>Return to Acme Widgets <a href="{{ public }}">home page</a>.</p>
+    <p>Return to Big Corp Ltd <a href="{{ public }}">home page</a>.</p>
 </body>
 </html>
