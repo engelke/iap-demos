@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Acme Widgets</title>
-</head>
-
-<body>
-    <img src="/static/logo.jpg" />
-
-    <h1>Acme Widgets Employee Site for {{ email }}</h1>
-
+    <head>
+        <title>Big Corp Ltd Employee Site</title>
+        <link type="text/css" rel="stylesheet" href="/static/style.css">
+    </head>
+    
+    <body>
+        <div id="heading">
+            <img id="logo" src="/static/logo.png" />
+            <div id="welcome">
+                Big Corp Ltd Employee Site
+            </div>
+        </div>
+    
+        <div id="slogan">We do everything!</div>
+    
     <h2>Notices:</h2>
     <ul>
         {% for notice in notices %}
@@ -16,9 +22,10 @@
                 <br />
                 {{ notice.description }}
             </li>
+
         {% endfor %}
     </ul>
 
-    <p>Return to Acme Widgets <a href="{{ public }}">home page</a>.</p>
+    <p>Return to Big Corp Ltd <a href="{{ public }}">home page</a>.</p>
 </body>
 </html>

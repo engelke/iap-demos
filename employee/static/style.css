@@ -1,0 +1,33 @@
+#heading {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width 100%
+}
+
+#logo {
+    height: 150px;
+}
+
+#welcome {
+    display: inline;
+    white-space: nowrap;
+    font-size: 48px;
+    font-family: sans-serif;
+}
+
+#slogan {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    font-size: 24px;
+    font-family: sans-serif;
+    font-style: italic;
+}
+
+p {
+    font-size: 20pt;
+}

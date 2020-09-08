@@ -10,4 +10,4 @@ handlers:
   script: auto
 
 env_variables:
-  public: "https://enterprise-iap-use-cases.uc.r.appspot.com/"
+  public: "https://use-cases-for-iap.uc.r.appspot.com/"

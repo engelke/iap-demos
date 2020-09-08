@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Acme Widgets Notices</title>
-</head>
-
-<body>
-    <img src="/static/logo.jpg" />
-
+    <head>
+        <title>Big Corp Ltd Admin Site</title>
+        <link type="text/css" rel="stylesheet" href="/static/style.css">
+    </head>
+    
+    <body>
+        <div id="heading">
+            <img id="logo" src="/static/logo.png" />
+            <div id="welcome">
+                Big Corp Ltd Admin Site
+            </div>
+        </div>
+    
+        <div id="slogan">We do everything!</div>
+    
     <h1>Edit Notice</h1>
 
     <form action="/replace-notice" method="post">
@@ -25,6 +33,6 @@
         <input type="submit" value="Save notice" />
     </form>
 
-    <p>Return to Acme Widgets <a href="{{ public }}">home page</a>.</p>
+    <p>Return to Big Corp Ltd <a href="{{ public }}">home page</a>.</p>
 </body>
 </html>
