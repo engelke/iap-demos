@@ -24,4 +24,8 @@ app = Flask(__name__)
 def home_page():
     support_url = os.environ.get('support')
     return render_template('homepage.html', support=support_url)
+
+
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', port=8080, debug=True)
     

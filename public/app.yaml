@@ -10,4 +10,4 @@ handlers:
   script: auto
 
 env_variables:
-  support: "https://support-dot-enterprise-iap-use-cases.uc.r.appspot.com/"
+  support: "https://support-dot-use-cases-for-iap.uc.r.appspot.com/"
