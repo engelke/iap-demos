@@ -1,0 +1,18 @@
+dispatch:
+- url: "bigcorpltd.com/*"
+  service: default
+
+- url: "employees.bigcorpltd.com/*"
+  service: employee
+
+- url: "admin.bigcorpltd.com/*"
+  service: admin
+
+- url: "customersupport.bigcorpltd.com/*"
+  service: customersupport
+
+- url: "support.bigcorpltd.com/*"
+  service: support
+
+- url: "www.bigcorpltd.com/*"
+  service: default
