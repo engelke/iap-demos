@@ -22,6 +22,7 @@
                 <li>{{ request.timestamp}}:
                     <a href="/view-request/{{ request.id }}">
                     <strong>{{ request.title }}</strong></a>
+                    {{ request.email }}
                 </li>
             {% endfor %}
         </ul>
